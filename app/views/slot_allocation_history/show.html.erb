@@ -1,0 +1,17 @@
+<h1>Slot Allocation History for Vehicle: <%= @vehicle_registration_number %></h1>
+<table>
+  <thead>
+  <tr>
+    <th>Slot Number</th>
+    <th>Entry Time</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @allocation_history.each do |slot_booking| %>
+    <tr>
+      <td><%= slot_booking.slot.number %></td>
+      <td><%= slot_booking.entry_time.strftime('%Y-%m-%d %H:%M:%S') %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

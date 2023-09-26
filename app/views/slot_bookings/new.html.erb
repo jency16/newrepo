@@ -1,0 +1,13 @@
+<%= form_with model: @slot_booking, url: slot_bookings_path, method: :post do |f| %>
+  <%= f.label :entrance_number, 'Entrance Number/ID' %>
+  <%= f.select :entrance_number, @entry_points.map { |ep| [ep.name, ep.id] }, prompt: 'Select an entry point' %>
+
+  <%= f.label :vehicle_registration_number, 'Vehicle Registration Number' %>
+  <%= f.text_field :vehicle_registration_number %>
+
+
+  <%= f.label :entry_time, 'Entry Time' %>
+  <%= f.datetime_select :entry_time, value: Date.today %>
+
+  <%= f.submit 'Book Slot' %>
+<% end %>

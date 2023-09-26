@@ -1,0 +1,25 @@
+<%= form_tag(used_slots_path, method: :get) do %>
+  <%= label_tag :selected_date, 'Select Date' %>
+  <%= date_field_tag :selected_date, @selected_date %>
+  <%= submit_tag 'Filter' %>
+<% end %>
+
+<h1>Used Slots on <%= @selected_date.strftime('%Y-%m-%d') %></h1>
+<table>
+  <thead>
+  <tr>
+    <th>Slot Number</th>
+    <th>Vehicle Registration Number</th>
+    <th>Entry Time</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @used_slots.each do |slot_booking| %>
+    <tr>
+      <td><%= slot_booking.slot.number %></td>
+      <td><%= slot_booking.vehicle_registration_number %></td>
+      <td><%= slot_booking.entry_time.strftime('%Y-%m-%d %H:%M:%S') %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
